@@ -1,4 +1,4 @@
-var HERO_Y = canvas.height - 30;
+var HERO_Y = canvas.height - 20;
 var mouseMove$ = Rx.Observable.fromEvent(canvas, 'mousemove');
 var spaceShip$ = mouseMove$
   .map(function(event) {
@@ -28,14 +28,6 @@ var spaceShip$ = mouseMove$
 
   function renderScene(actors){
     paintStars(actors.stars);
+    paintEnemies(actors.enemies);
     paintSpaceShip(actors.spaceship.x, actors.spaceship.y);
   }
-
-  var game$ = Rx.Observable
-    .combineLatest(
-      starStream$, spaceShip$,
-      function(stars, spaceship){
-        return {stars: stars, spaceship: spaceship}
-    });
-
-game$.subscribe(renderScene);
