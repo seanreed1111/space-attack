@@ -5,7 +5,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 var SPEED = 40;
-var STAR_NUMBER = 250;
+var STAR_NUMBER = 500;
 var starStream$ = Rx.Observable.range(1, STAR_NUMBER)
   .map(function(){
     return {
@@ -25,10 +25,7 @@ var starStream$ = Rx.Observable.range(1, STAR_NUMBER)
       });
       return starArray
     });
-  })
-  .subscribe(function (starArray){
-    paintStars(starArray)
-  })
+  });
 
 function paintStars(stars){
   ctx.fillStyle = '#000000';
